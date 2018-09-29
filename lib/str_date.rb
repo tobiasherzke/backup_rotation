@@ -5,15 +5,12 @@ class StrDate
     else
       raise "constructor parameter string needs exactly 8 digits"
     end
-    if year < 2000
-      raise "year may not be before 2000"
-    end
-    if month < 1 || month > 12
-      raise "month must be between 01 and 12"
-    end
-    if day < 1 || day > 31
-      raise "day must be between 01 and 31"
-    end
+    [[:year, 2000, 3000], [:month, 1, 12], [:day, 1, 31]].each{
+      |datefield,min,max|
+      if send(datefield) < min || send(datefield) > max
+        raise "#{datefield} must be between #{min} and #{max}"
+      end
+    }
   end
 
   def year()
