@@ -53,4 +53,11 @@ RSpec.describe StrDate  do
       expect(StrDate.new("20180929").day).to eq(29)
     end
   end
+
+  context "comparison" do
+    it 'recognizes date equality' do
+      expect(StrDate.new("20180929")).
+      to eq(StrDate.new("20180929"))
+    end
+  end
 end
