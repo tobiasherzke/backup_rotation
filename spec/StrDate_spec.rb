@@ -1,7 +1,6 @@
 require "str_date"
 
 RSpec.describe StrDate  do
-
   context 'constructor' do
     it 'can be created from a string containing 8 digits' do
       expect{StrDate.new("20180929")}.to_not raise_exception
@@ -69,5 +68,12 @@ RSpec.describe StrDate  do
       expect(StrDate.new("20180929")).
       to be > (StrDate.new("20180928"))
     end
+  end
+end
+
+RSpec.describe StrDateDifference do
+  before{@diff = StrDateDifference.new(StrDate.new("20180929"))}
+  it 'can tell the difference in years' do
+      expect(@diff.get_num_years_back(StrDate.new("20180929"))).to eq 0
   end
 end

@@ -28,3 +28,12 @@ class StrDate
   end
   include Comparable
 end
+
+class StrDateDifference
+  def initialize(strdate_reference)
+    @ref = strdate_reference
+  end
+  def get_num_years_back(strdate)
+    0
+  end
+end
