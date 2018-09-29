@@ -63,5 +63,11 @@ RSpec.describe StrDate  do
       expect(StrDate.new("20180929") != StrDate.new("20180930")).
       to be true
     end
+    it 'recognizes greater / lesser' do
+      expect(StrDate.new("20180929")).
+      to be < (StrDate.new("20180930"))
+      expect(StrDate.new("20180929")).
+      to be > (StrDate.new("20180928"))
+    end
   end
 end
