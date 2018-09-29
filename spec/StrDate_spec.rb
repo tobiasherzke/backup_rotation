@@ -59,5 +59,9 @@ RSpec.describe StrDate  do
       expect(StrDate.new("20180929")).
       to eq(StrDate.new("20180929"))
     end
+    it 'recognizes inequality' do
+      expect(StrDate.new("20180929") != StrDate.new("20180930")).
+      to be true
+    end
   end
 end
