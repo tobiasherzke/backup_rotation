@@ -8,6 +8,9 @@ class StrDate
     if year < 2000
       raise "year may not be before 2000"
     end
+    if month < 1 || month > 12
+      raise "month must be between 01 and 12"
+    end
   end
 
   def year()

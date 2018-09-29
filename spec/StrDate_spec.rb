@@ -26,6 +26,13 @@ RSpec.describe StrDate  do
       expect{StrDate.new("19991231")}.
       to raise_exception(RuntimeError)
     end
+
+    it 'rejects a constructor with a month outside 1-12' do
+      ["20180001","20181301"].each{|invalid_month_str|
+        expect{StrDate.new(invalid_month_str)}.
+        to raise_exception(RuntimeError)
+      }
+    end
   end
 
   context "Date field accessors" do
