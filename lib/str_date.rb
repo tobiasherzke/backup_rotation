@@ -56,3 +56,10 @@ class StrDateDifference
      Date.new(strdate.year,strdate.month,strdate.day)).round()
   end
 end
+
+class StrDateCollection
+  def initialize(*args)
+    @available = args.map{|str| StrDate.new(str)}.sort
+  end
+  attr_reader :available
+end

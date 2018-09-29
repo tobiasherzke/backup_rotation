@@ -90,3 +90,12 @@ RSpec.describe StrDateDifference do
       expect(@diff.get_num_days_back(StrDate.new("20171001"))).to eq 363
   end
 end
+
+RSpec.describe StrDateCollection do
+  it 'holds available dates in a sorted list' do
+    s = StrDateCollection.new("20180929","20170929","20170930")
+    expect(s.available).to eq([StrDate.new("20170929"),
+                               StrDate.new("20170930"),
+                               StrDate.new("20180929")])
+  end
+end
