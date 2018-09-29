@@ -21,6 +21,16 @@ RSpec.describe StrDate  do
         to raise_exception(RuntimeError)
       }
     end
+
+    it 'rejects a constructor with a year before 2000' do
+      expect{StrDate.new("19991231")}.
+      to raise_exception(RuntimeError)
+    end
   end
 
+  context "Date field accessors" do
+    it 'returns the first 4 digits as year' do
+        expect(StrDate.new("20180929").year).to eq(2018)
+    end
+  end
 end
