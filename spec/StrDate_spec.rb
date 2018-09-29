@@ -32,5 +32,8 @@ RSpec.describe StrDate  do
     it 'returns the first 4 digits as year' do
         expect(StrDate.new("20180929").year).to eq(2018)
     end
+    it 'returns digits 5 and 6 as month' do
+      expect(StrDate.new("20180929").month).to eq(9)
+    end
   end
 end

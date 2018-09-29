@@ -13,4 +13,7 @@ class StrDate
   def year()
     @string[0,4].to_i
   end
+  def month()
+    @string[4,2].to_i
+  end
 end
