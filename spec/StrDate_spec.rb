@@ -33,6 +33,13 @@ RSpec.describe StrDate  do
         to raise_exception(RuntimeError)
       }
     end
+
+    it 'rejects a constructor with a day outside 1-31' do
+      ["20180900","20180932"].each{|invalid_day_str|
+        expect{StrDate.new(invalid_day_str)}.
+        to raise_exception(RuntimeError)
+      }
+    end
   end
 
   context "Date field accessors" do
@@ -41,6 +48,9 @@ RSpec.describe StrDate  do
     end
     it 'returns digits 5 and 6 as month' do
       expect(StrDate.new("20180929").month).to eq(9)
+    end
+    it 'returns digits 7 and 8 as month' do
+      expect(StrDate.new("20180929").day).to eq(29)
     end
   end
 end

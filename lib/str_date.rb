@@ -11,6 +11,9 @@ class StrDate
     if month < 1 || month > 12
       raise "month must be between 01 and 12"
     end
+    if day < 1 || day > 31
+      raise "day must be between 01 and 31"
+    end
   end
 
   def year()
@@ -18,5 +21,8 @@ class StrDate
   end
   def month()
     @string[4,2].to_i
+  end
+  def day()
+    @string[6,2].to_i
   end
 end
