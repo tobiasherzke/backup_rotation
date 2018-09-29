@@ -34,6 +34,11 @@ class StrDateDifference
     @ref = strdate_reference
   end
   def get_num_years_back(strdate)
-    0
+    yearsdiff = @ref.year - strdate.year
+    if (@ref.month < strdate.month) ||
+      (@ref.month == strdate.month && @ref.day < strdate.day)
+      yearsdiff -= 1
+    end
+    return yearsdiff
   end
 end
