@@ -1,3 +1,5 @@
+require "date"
+
 class StrDate
   def initialize(string)
     if string =~ /^\d{8}$/
@@ -48,5 +50,9 @@ class StrDateDifference
       monthsdiff -= 1
     end
     return monthsdiff
+  end
+  def get_num_days_back(strdate)
+    (Date.new(@ref.year,@ref.month,@ref.day) -
+     Date.new(strdate.year,strdate.month,strdate.day)).round()
   end
 end
