@@ -41,4 +41,12 @@ class StrDateDifference
     end
     return yearsdiff
   end
+  def get_num_months_back(strdate)
+    monthsdiff = @ref.month - strdate.month +
+      (@ref.year - strdate.year) * 12;
+    if @ref.day < strdate.day
+      monthsdiff -= 1
+    end
+    return monthsdiff
+  end
 end

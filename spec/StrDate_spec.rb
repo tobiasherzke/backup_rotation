@@ -78,4 +78,9 @@ RSpec.describe StrDateDifference do
       expect(@diff.get_num_years_back(StrDate.new("20170929"))).to eq 1
       expect(@diff.get_num_years_back(StrDate.new("20170930"))).to eq 0
   end
+  it 'can tell the difference in months' do
+      expect(@diff.get_num_months_back(StrDate.new("20180929"))).to eq 0
+      expect(@diff.get_num_months_back(StrDate.new("20170929"))).to eq 12
+      expect(@diff.get_num_months_back(StrDate.new("20170930"))).to eq 11
+  end
 end
