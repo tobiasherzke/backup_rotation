@@ -98,4 +98,12 @@ RSpec.describe StrDateCollection do
                                StrDate.new("20170930"),
                                StrDate.new("20180929")])
   end
+
+  it 'ignores initializer parameters that do not translate to StrDates' do
+    s = StrDateCollection.new("20180929","20170929","latest",
+                              "lost+found","20170930")
+    expect(s.available).to eq([StrDate.new("20170929"),
+                               StrDate.new("20170930"),
+                               StrDate.new("20180929")])
+  end
 end

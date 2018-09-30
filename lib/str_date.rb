@@ -59,7 +59,11 @@ end
 
 class StrDateCollection
   def initialize(*args)
-    @available = args.map{|str| StrDate.new(str)}.sort
+    @available = args.map do |str|
+      StrDate.new(str)
+    rescue
+      nil
+    end.compact.sort
   end
   attr_reader :available
 end
