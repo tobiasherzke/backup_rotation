@@ -66,4 +66,28 @@ class StrDateCollection
     end.compact.sort
   end
   attr_reader :available
+  def newer_than(pivot_date)
+    dup.newer_than!(pivot_date)
+  end
+  def newer_than!(pivot_date)
+    available.select!{|strdate|strdate >= pivot_date}
+    self
+  end
+  def latest_each_month
+    dup.latest_each_month!
+  end
+  def latest_each_month!
+    @available = all_months.map{|year,month| latest_in(year,month)}
+    self
+  end
+  def all_months
+    available.map{|d|[d.year,d.month]}.uniq
+  end
+  def latest_in(y,m)
+    available.select{|d| d.year == y && d.month == m}[-1]
+  end
+  def <=>(other)
+    available <=> other.available
+  end
+  include Comparable
 end
