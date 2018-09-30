@@ -70,7 +70,7 @@ class StrDateCollection
     dup.newer_than!(pivot_date)
   end
   def newer_than!(pivot_date)
-    available.select!{|strdate|strdate >= pivot_date}
+    @available = available.select{|strdate|strdate >= pivot_date}
     self
   end
   def latest_each_month
@@ -90,4 +90,11 @@ class StrDateCollection
     available <=> other.available
   end
   include Comparable
+  def -(other)
+    dup.subtract!(other)
+  end
+  def subtract!(other)
+    @available = available - other.available
+    self
+  end
 end

@@ -132,4 +132,10 @@ RSpec.describe StrDateCollection do
     expect(testcollection.latest_in(2018,6)).to eq(StrDate.new("20180614"))
     expect(testcollection.latest_in(2018,7)).to eq(nil)
   end
+  it 'supports set subtraction' do
+    s = StrDateCollection.new("20180929","20170929","20170930")
+    latest = s.newer_than(StrDate.new("20180830"))
+    expect(s - latest).to eq(StrDateCollection.new("20170929","20170930"))
+    expect((s - latest) - latest).to eq(StrDateCollection.new("20170929","20170930"))
+  end
 end
